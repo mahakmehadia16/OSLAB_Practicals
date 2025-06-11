@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main() {
+int n, i;
+float totalTAT = 0, totalWT = 0, totalCT = 0;
+printf("Enter number of processes: ");
+scanf("%d", &n);
+int at[n], bt[n], ct[n], tat[n], wt[n];
+printf("Enter Arrival Time and Burst Time for each
+process:\n");
+for (i = 0; i < n; i++)
+scanf("%d %d", &at[i], &bt[i]);
+// Calculate Completion Time (CT)
+int currentTime = 0;
+for (i = 0; i < n; i++) {
+if (currentTime < at[i])
+currentTime = at[i];
+currentTime += bt[i];
+ct[i] = currentTime;
+totalCT += ct[i];
+}
+// Calculate Turnaround Time (TAT) and Waiting
+Time (WT)
+for (i = 0; i < n; i++) {
+tat[i] = ct[i] - at[i];
+wt[i] = tat[i] - bt[i];
+totalTAT += tat[i];
+totalWT += wt[i];
+}
+// Print results
+printf("\nPID\tAT\tBT\tCT\tTAT\tWT\n");
+for (i = 0; i < n; i++)
+printf("%d\t%d\t%d\t%d\t%d\t%d\n",
+i+1, at[i], bt[i], ct[i], tat[i], wt[i]);
+// Print Averages
+printf("\nAverage Completion Time: %.2f\n"
+,totalCT/n);
+printf("Average Turnaround Time: %.2f\n"
+,totalTAT/n);
+printf("Average Waiting Time: %.2f\n",totalWT/n);
+return 0;
+}

@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "Enter marks for subject A: "
+read a
+echo "Enter marks for subject B: "
+read b
+echo "Enter marks for subject C: "
+read c
+sum=$(( a + b + c ))
+avg=$(( sum / 3 ))
+echo "Percentage: $avg"
+if [ $avg -gt 80 ]; then
+echo "Grade A"
+elif [ $avg -gt 70 ]; then
+echo "Grade B"
+else
+echo "Grade C"
+fi
